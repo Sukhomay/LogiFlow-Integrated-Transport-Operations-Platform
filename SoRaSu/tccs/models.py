@@ -1,4 +1,4 @@
-from tccs import app,db, login_manager,user
+from tccs import app,db, login_manager,get
 from tccs import bcrypt
 from flask_login import UserMixin
 
@@ -9,10 +9,6 @@ def load_user(customer_id):
         return Customer.query.get(int(customer_id))
     if(user=="employee"):
         return Employee.query.get(int(customer_id))
-
-# @login_manager.user_loader
-# def load_user(employee_id):
-#     return Employee.query.get(int(employee_id))
 
 
 class Customer(db.Model, UserMixin):
