@@ -1,4 +1,4 @@
-from tccs import app
+from tccs import app,change
 from flask import render_template, redirect, url_for, flash
 from tccs.models import Customer, Employee
 from tccs.forms import RegisterCustomerForm, RegisterEmployeeForm, LoginCustomerForm,LoginEmployeeForm
