@@ -29,7 +29,7 @@ def register_customer_page():
                               password=form.password1.data)
         db.session.add(user_to_create)
         db.session.commit()
-        # window.localStorage(user,1)
+        change("customer")
         login_user(user_to_create)
         flash(f"Account created successfully! You are now logged in as {user_to_create.username}", category='success')
         return redirect(url_for('home_page'))
@@ -51,7 +51,7 @@ def register_employee_page():
                               password=form.password1.data)
         db.session.add(user_to_create)
         db.session.commit()
-        # window.localStorage(user,2)
+        change("employee")
         login_user(user_to_create)
         flash(f"Account created successfully! You are now logged in as {user_to_create.username}", category='success')
         return redirect(url_for('home_page'))
@@ -72,6 +72,7 @@ def login_customer_page():
     if form.validate_on_submit():
         attempted_user = Customer.query.filter_by(username=form.username.data).first()
         if attempted_user and attempted_user.check_password_correction(attempted_password = form.password.data):
+            change("customer")
             login_user(attempted_user)
             current_user = attempted_user
             flash(f"You are logged in as: {attempted_user.username}",category='success')
@@ -86,6 +87,7 @@ def login_employee_page():
     if form.validate_on_submit():
         attempted_user = Employee.query.filter_by(username=form.username.data).first()
         if attempted_user and attempted_user.check_password_correction(attempted_password = form.password.data):
+             change("employee")
             login_user(attempted_user)
             flash(f"You are logged in as: {attempted_user.username}",category='success')
             return redirect(url_for('home_page'))
