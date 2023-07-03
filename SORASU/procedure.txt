@@ -1,0 +1,10 @@
+1.Register a manager and then login to buy new trucks.(Position- manager)
+2.Register employees(except driver) for the branches.(Position- except manager and driver)
+3.Register drivers.(Position-driver)
+3.Register customer and place consignment.
+4.Employee of the source branch of the consignment will approve the truck(from truck status).
+5.Driver will first update his location and then dispatch the truck.
+6.Driver can see the route from his location to the destination branch.
+6.Driver will reach the destination and then click on delivered.
+7.Employee of destination branch will approve the consignments delivered.
+8.Driver will make the truck available when it reaches the source branch again.

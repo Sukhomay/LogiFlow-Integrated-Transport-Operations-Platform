@@ -1,0 +1,56 @@
+{% extends 'base2.html' %}
+
+{% block title %}
+View Consignment Status Page
+{% endblock %}
+
+{% block content %}
+<div class="container" style="width:fit-content; height: 100vh;">
+  <div class="card shadow my-5">
+    <h4 class="card-header" style="color:black">Truck List</h4>
+    <div class="card-body">
+      <form class="mb-3">
+        <label for="searchBox" style="color:black">Search list</label>
+        <input type="text" id="searchBox" name="searchBox" class="form-control">
+        <small class="form-text feedback"></small>
+      </form>
+      <table class="table table-searchable table-striped table-bordered table-hover table-responsive ">
+        <thead>
+          <tr>
+            <th>Truck ID</th>
+            <th>Truck Number</th>
+            <th>Source Branch Name</th>
+            <th>Destination Branch Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for truck in trucks %}
+          {% include 'includes/receive_modals.html' %}
+          <tr>
+            <td style="font-weight: 800; font-style: italic; text-align: center;">{{ truck.id }}</td>
+            <td>{{ truck.truckNumber }}</td>
+            <td style="margin-left: 1px;">{{ branch_city[truck.branch_id] }}</td>
+            <td style="margin-left: 1px;">{{ branch_city[truck.destinationBranch] }}</td>
+            {% if truck.status.name == "AVAILABLE" %}
+            <td>Destination Reached and Approved</td>
+            {% else %}
+            {% if delivered_click == True %}
+            <td>Destination Reached but not Approved</td>
+            {% else %}
+            <td data-control="select">
+              <button class="btn btn-outline btn-success" data-toggle="modal"
+                data-target="#Modal-DestinationReached-{{ truck.id }}">Delivered</button>
+            </td>
+            {% endif %}
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer"></div>
+  </div>
+</div>
+
+{% endblock %}

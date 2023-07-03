@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block content %}
+  
+  <div id="home" class="flex" style="position: relative;">
+    <div class="container">
+      <div class="row">
+          <div class="col-xl-12 col-lg-12">
+              <div>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                  <h1 >Safe & Reliable <span>Transportation & Logistic</span> Solutions!</h1>
+              </div> 
+              <a href=""><button class="button-44" style="margin-right: 20px;">Know More About Us</button></a>
+              <a href="{{ url_for('register_page') }}"><button class="button-44">Register with us Today!</button></a>
+          </div>
+      </div>
+  </div>
+  <style>
+    #home {
+      background-image: url('/static/img/h1_hero.jpg');
+      height: 100vh;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  </style>
+
+
+{% endblock %}

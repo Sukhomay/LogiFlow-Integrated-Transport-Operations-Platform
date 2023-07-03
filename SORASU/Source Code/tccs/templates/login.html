@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+Login Page
+{% endblock %}
+
+{% block content %}
+<div class="container text-center" style="margin-top: 5%; height: 100vh;">
+<div class="row">
+    <div class="col-sm-6">
+      <div class="card" style="background: linear-gradient(to right, #184b73, #49ae98);">
+        <img src="https://img.freepik.com/premium-vector/car-protection-business-concept_114835-209.jpg?w=826" class="card-img-top" alt="..." height="400" width="100">
+        <div class="card-body">
+          <a href="{{ url_for('login_customer_page') }}"> <button class="button-44">Login as Customer</button></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card" style="background: linear-gradient(to right, #49ae98, #184b73);">
+        <img src="https://img.freepik.com/free-vector/businessman-concept-illustration_114360-1246.jpg?w=740&t=st=1680869590~exp=1680870190~hmac=daecf65ceb28bc81fdca3f9f01b65dbb39be58cf71c943ecd861737c5a024034" class="card-img-top" alt="..." height="400" width="100">
+        <div class="card-body">
+          <a href="{{ url_for('login_employee_page') }}"> <button class="button-44">Login as Employee</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

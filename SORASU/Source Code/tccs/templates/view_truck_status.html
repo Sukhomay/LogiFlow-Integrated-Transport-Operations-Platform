@@ -1,0 +1,67 @@
+{% extends 'base2.html' %}
+
+{% block title %}
+View Consignment Status Page
+{% endblock %}
+
+{% block content %}
+<div style="height: 100vh;">
+<div class="container" style="width:fit-content">
+  <div class="card shadow my-5">
+    <h4 class="card-header" style="color:black">Truck List</h4>
+    <div class="card-body">
+      <form class="mb-3">
+        <label for="searchBox" style="color:black">Search list</label>
+        <input type="text" id="searchBox" name="searchBox" class="form-control">
+        <small class="form-text feedback"></small>
+      </form>
+      <table class="table table-searchable table-striped table-bordered table-hover table-responsive ">
+        <thead>
+          <tr>
+            <th>Truck ID</th>
+            <th>Truck Number</th>
+            <th>Source Branch Name</th>
+            <th>Status</th>
+            <th>Volume Consumed</th>
+            <th>Action</th>
+            <th>Live Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for truck in trucks %}
+          {% include 'includes/approve_modals.html' %}
+          <tr>
+            <td style="font-weight: 800; font-style: italic; text-align: center;">{{ truck.id }}</td>
+            <td>{{ truck.truckNumber }}</td>
+            <td style="margin-left: 1px;">{{ branch_city[truck.branch_id] }}</td>
+            <td>{{truck.status.name}}</td>
+            <td>{{ truck.volumeConsumed }}</td>
+            {% if truck.status.name != "ASSIGNED" and truck.status.name != "AVAILABLE" %}
+            <td>Driver Assigned</td>
+            {% if truck.live_latitude == None or truck.live_longitude == None %}
+            <td>To check status update truck location</td>
+            {% else %}
+            <td><button class="btn btn-outline btn-success"><a href="/manager_google_maps/{{ truck.id }}" style="text-decoration: none; color: whitesmoke;">Check Status</a></button></td>
+            {% endif %}
+            {% else %}
+              {% if truck.volumeConsumed != 0 %}
+              <td data-control="select">
+                <button class="btn btn-outline btn-success" data-toggle="modal"
+                  data-target="#Modal-ApproveTruck-{{ truck.id }}">Approve</button>
+              </td>
+              {% else %}
+              <td>Truck has no consignment</td>
+              {% endif %}
+              <td>Truck Not Enroute</td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer"></div>
+  </div>
+</div>
+</div>
+
+{% endblock %}
