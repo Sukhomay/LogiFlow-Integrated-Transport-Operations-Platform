@@ -64,7 +64,7 @@ The customer will be associated with the following use cases :-
 ## Installation
 - Clone this repository-Move to your workspace directory and clone this repository
 ```bash
-git clone https://github.com/rajparikh03/TCCS.git
+git clone https://github.com/SoRaSu-SWE23/SoRaSu.git
 ```
 - Install dependencies-
 Move to the cloned repository directory and run
