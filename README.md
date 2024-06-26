@@ -1,5 +1,5 @@
 
-# SoRaSu-TCCS
+# LogiFlow: Integrated Transport Operations Platform
 
 A Web-based application created using HTML,CSS,JS for the frontend and Flask, SQLite, Here Routing API and SmtpJS for the backend.
 
